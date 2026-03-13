@@ -1,0 +1,11 @@
+# Suspicious outbound to common C2 ports / patterns
+tcp.port == 4444 or tcp.port == 8080 or tcp.port == 443 and http.request.method == "POST" and frame.len > 4000
+
+# HTTP POST exfiltration (large payload suspicion)
+http.request.method == "POST" && http.request.uri contains "upload" && frame.len > 5000
+
+# Potential DNS tunneling / C2
+dns && dns.qry.name.len > 60 && dns.flags.response == 0
+
+# Beacon-like periodic small outbound connections
+tcp.len < 200 && tcp.stream && frame.time_delta < 65 && frame.time_delta > 55
