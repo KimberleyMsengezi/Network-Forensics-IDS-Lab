@@ -1,0 +1,6 @@
+# Custom rule: Detect Nmap aggressive version scan (-sV -A)
+# MITRE: T1595.002
+alert tcp any any -> $HOME_NET any (msg:"SCAN Nmap Aggressive Version Probing"; flow:to_server,established; content:"Nmap Scripting Engine"; nocase; classtype:attempted-recon; sid:1000005; rev:1;)
+
+# Detect high-rate SYN scan pattern (typical Nmap -sS T4/T5)
+alert tcp any any -> $HOME_NET any (msg:"SCAN Nmap SYN Scan High Rate"; flags:S; threshold:type both, track by_src, count 15, seconds 5; classtype:attempted-recon; sid:1000006; rev:1;)
