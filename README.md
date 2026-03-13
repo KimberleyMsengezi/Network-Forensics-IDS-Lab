@@ -21,9 +21,9 @@ Deployed a full **Network Security Monitoring (NSM)** and **Intrusion Detection 
 ## Lab Architecture Diagram
 ```mermaid
 graph LR
-    A[Kali Attacker VM<br/>• Nmap scans<br/>• Hydra brute-force<br/>• Simulated C2 (e.g. Cobalt Strike beacon)] 
-    --> B[Internal Network<br/>(Bridged/Mirrored Traffic)]
-    B --> C[Victim VMs<br/>• Ubuntu/Windows targets<br/>• Vulnerable services]
-    B --> D[Security Onion Sensor VM<br/>• Suricata IDS/IPS<br/>• Zeek protocol analysis<br/>• Full packet capture]
-    D --> E[Wireshark Analysis<br/>• Deep packet inspection<br/>• Protocol dissection<br/>• IOC extraction]
-    D --> F[Dashboards<br/>• Kibana/Elastic<br/>• SOC console alerts]
+    A[Kali Attacker VM<\n>• Nmap scans<\n>• Hydra brute-force<\n>• Simulated C2 (e.g. Cobalt Strike beacon)] 
+    --> B[Internal Network<\n>(Bridged/Mirrored Traffic)]
+    B --> C[Victim VMs<\n>• Ubuntu/Windows targets<\n>• Vulnerable services]
+    B --> D[Security Onion Sensor VM<\n>• Suricata IDS/IPS<\n>• Zeek protocol analysis<\n>• Full packet capture]
+    D --> E[Wireshark Analysis<\n>• Deep packet inspection<\n>• Protocol dissection<\n>• IOC extraction]
+    D --> F[Dashboards<\n>• Kibana/Elastic<\n>• SOC console alerts]
