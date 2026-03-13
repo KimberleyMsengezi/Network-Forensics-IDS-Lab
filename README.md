@@ -1,29 +1,22 @@
 # 01 - Network Forensics & IDS Lab | Security Onion + Wireshark
 
 ![Security Onion](https://img.shields.io/badge/Security%20Onion-2.4-00A651?style=for-the-badge&logo=linux&logoColor=white)
-![Suricata](https://img.shields.io/badge/Suricata-IDS-orange?style=for-the-badge)
-![Zeek](https://img.shields.io/badge/Zeek-Network%20Analysis-blue?style=for-the-badge)
-![Wireshark](https://img.shields.io/badge/Wireshark-Packet%20Analysis-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
+![Suricata](https://img.shields.io/badge/Suricata-7.0.7-orange?style=for-the-badge)
+![Zeek](https://img.shields.io/badge/Zeek-6.0.8-blue?style=for-the-badge)
+![Wireshark](https://img.shields.io/badge/Wireshark-4.4.1-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
 ![MITRE ATT&CK](https://img.shields.io/badge/MITRE%20ATT%26CK-v15-red?style=for-the-badge)
 
 ## Overview
-Deployed a full **Network Security Monitoring (NSM)** and **Intrusion Detection System (IDS)** lab using **Security Onion** (Suricata + Zeek) integrated with **Wireshark** for deep packet inspection. Generated realistic attack traffic (Nmap scans, Hydra brute-force, simulated C2/beaconing), captured/analyzed PCAPs, tuned rules, extracted IOCs with Python, and mapped detections to **MITRE ATT&CK**. Demonstrates core network forensics, alert triage, and IOC handling skills.
+Built a production-grade **Network Security Monitoring (NSM)** and **Intrusion Detection System (IDS)** laboratory environment using **Security Onion 2.4** (Suricata 7.0.7 + Zeek 6.0.8) combined with **Wireshark 4.4.1** for advanced packet-level forensics.  
 
-**Repository Structure**  
-- `/Suricata-Rules` → Custom & tuned signatures  
-- `/Zeek-Logs` → Sample extracted logs  
-- `/Wireshark-Filters` → Display & analysis filters  
-- `/Python-Scripts` → IOC extraction & VirusTotal enrichment  
-- `/PCAPs` → Sample capture placeholders  
-- `/Diagrams` → Lab topology & data flow  
-- `/Reports` → Forensics reports with timelines & IOCs
+The lab simulates enterprise network traffic patterns and realistic adversary behaviors using a Kali Linux attacker VM targeting vulnerable Ubuntu/Windows victims. Generated malicious traffic across multiple attack phases (reconnaissance, initial access, execution, persistence, lateral movement, C2, exfiltration), captured full packet data, tuned detection rules, performed deep packet inspection, extracted and enriched IOCs via scripting, and documented forensic findings with MITRE ATT&CK mappings.
 
 ## Lab Architecture Diagram
 ```mermaid
 graph LR
-    A[Kali Attacker VM<\n>• Nmap scans<\n>• Hydra brute-force<\n>• Simulated C2 (e.g. Cobalt Strike beacon)] 
-    --> B[Internal Network<\n>(Bridged/Mirrored Traffic)]
-    B --> C[Victim VMs<\n>• Ubuntu/Windows targets<\n>• Vulnerable services]
-    B --> D[Security Onion Sensor VM<\n>• Suricata IDS/IPS<\n>• Zeek protocol analysis<\n>• Full packet capture]
-    D --> E[Wireshark Analysis<\n>• Deep packet inspection<\n>• Protocol dissection<\n>• IOC extraction]
-    D --> F[Dashboards<\n>• Kibana/Elastic<\n>• SOC console alerts]
+    A["Kali Attacker VM (Nmap, Hydra, Metasploit, custom C2)"] 
+    --> B["Internal Network (bridged + mirrored SPAN port)"]
+    B --> C["Victim VMs (Ubuntu 22.04 + Windows 10/11)"]
+    B --> D["Security Onion Sensor VM (Suricata IPS + Zeek + Stenographer full PCAP)"]
+    D --> E["Wireshark Workstation (deep inspection + Lua dissectors)"]
+    D --> F["Kibana / Security Onion Console (alerts + dashboards)"]
