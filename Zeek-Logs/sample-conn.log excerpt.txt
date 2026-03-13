@@ -1,0 +1,4 @@
+#fields ts              uid             id.orig_h       id.orig_p  id.resp_h       id.resp_p  proto  service  duration  orig_bytes  resp_bytes  conn_state
+2026-03-13T08:45:12.123456Z  CAbCdEfGhIjKlMnOp  192.168.56.101  54321      192.168.56.102  80         tcp    http     4.8       14560       8920        SF
+2026-03-13T08:45:18.987654Z  CqRsTuVwXyZaBcDeF  192.168.56.101  54322      8.8.8.8         53         udp    dns      0.032     78          142         SF
+# Note: High orig_bytes on HTTP could indicate exfil test
