@@ -1,0 +1,3 @@
+# Detect Hydra-style SSH brute force attempts
+# MITRE: T1110.001
+alert tcp any any -> $HOME_NET 22 (msg:"AUTH Hydra SSH Brute Force Pattern"; flow:to_server,established; threshold:type both, track by_src, count 8, seconds 60; content:"SSH-"; depth:4; classtype:attempted-admin; sid:1000007; rev:1;)
